@@ -423,9 +423,9 @@ async def generate_answer(question, relevant_results, max_retries=2):
             
             logger.info("Sending request to LLM API")
             # Call OpenAI API through aipipe proxy
-            url = "https://aipipe.org/openai/v1/chat/completions"
+            url = "https://api.openai.com/v1/chat/completions"
             headers = {
-                "Authorization": API_KEY,
+                "Authorization": f"Bearer {API_KEY}",
                 "Content-Type": "application/json"
             }
             payload = {
@@ -477,9 +477,9 @@ async def process_multimodal_query(question, image_base64):
         
         logger.info("Processing multimodal query with image")
         # Call the GPT-4o Vision API to process the image and question
-        url = "https://aipipe.org/openai/v1/chat/completions"
+        url = "https://api.openai.com/v1/chat/completions"
         headers = {
-            "Authorization": API_KEY,
+            "Authorization": f"Bearer {API_KEY}",
             "Content-Type": "application/json"
         }
         
